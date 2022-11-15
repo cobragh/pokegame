@@ -118,6 +118,11 @@ public class Pokedex {
 //      FIRE
     }
 
+
+
+    public void pokemonsAchados(){
+
+    }
     @Override
     public String toString() {
         return
