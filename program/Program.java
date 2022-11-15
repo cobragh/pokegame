@@ -35,8 +35,9 @@ public class Program {
                 System.out.println("2 - Pokedex");
                 System.out.println("3 - Ver PokeBag");
                 System.out.print("Digite: ");
-                int numberLoop = sc.nextInt();
+                choise = sc.nextInt();
             }
+
             System.out.println("=========================================");
             TYPES typeGen = statsGenerator.type();
             TYPES type = typeGen;
@@ -48,6 +49,14 @@ public class Program {
             System.out.println(pokemon);
             pokedex1.pokemons(pokemon.getName()); //Adicionando as informacoes para passar para a pokedex.
             pokemons.add(pokedex1); //Adicionando o pokemon na lista da pokedex.
+
+            System.out.println("=====================");
+            System.out.println("O que deseja fazer?");
+            System.out.println("1 - Batalhar");
+            System.out.println("2 - Fugir");
+            System.out.println("3 - Capturar");
+            System.out.print("Digite: ");
+            int numberLoop = sc.nextInt();
         }
         else if(choise == 2){
             System.out.println(pokemons);

@@ -10,9 +10,9 @@ public class Dices {
         int numberDice = 0;
         int minDice = 0;
         int maxDice = 10;
-        numberWalk = (int) (Math.random()*(maxDice-minDice+1)+minDice);
+        numberDice = (int) (Math.random()*(maxDice-minDice+1)+minDice);
 
-        if(1 == 1){
+        if(numberWalk == numberDice){
             return 0;
         }
         return 1;
