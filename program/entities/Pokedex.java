@@ -4,6 +4,7 @@ import program.entities.types.enums.NAMES;
 import program.entities.types.enums.TYPES;
 
 public class Pokedex {
+
 //Aqui haverá uma lista com as características dos pokemons achados
     private NAMES name;
     private TYPES type;
@@ -114,6 +115,7 @@ public class Pokedex {
             setDescription("Inept at flying high. However, it can fly around very fast to protect its territory.");
             setWeakness(TYPES.ELECTRIC);
         }
+
 
 //      FIRE
     }

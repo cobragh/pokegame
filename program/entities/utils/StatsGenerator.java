@@ -1,10 +1,11 @@
 package program.entities.utils;
 
+import com.sun.jdi.Value;
 import program.entities.types.enums.NAMES;
 import program.entities.types.enums.TYPES;
 
 public class StatsGenerator {
-
+    Dices dice = new Dices();
     public NAMES name(TYPES type){
         int min = 1;
         int max = 6;
@@ -61,27 +62,59 @@ public class StatsGenerator {
             }
             return name(type());
     }
-    public int saude(){
-    int saude = 0;
-    int min = 120;
-    int max = 150;
-    saude = (int) (Math.random()*(max-min+1)+min);
-    return saude;
+    public int saude() {
+        int saude = 0;
+        int min = 0;
+        int max = 0;
+        if (dice.shinnyProbability() == 1) {
+            min = 145;
+            max = 150;
+            saude = (int) (Math.random() * (max - min + 1) + min);
+            return saude;
+        }
+        else {
+            min = 120;
+            max = 150;
+            saude = (int) (Math.random() * (max - min + 1) + min);
+            return saude;
+        }
     }
     public int attack(){
         int attack = 0;
-        int min = 40;
-        int max = 80;
-        attack = (int) (Math.random()*(max-min+1)+min);
-        return attack;
+        int min = 0;
+        int max = 0;
+        if (dice.shinnyProbability() == 1) {
+            min = 75;
+            max = 80;
+            attack = (int) (Math.random() * (max - min + 1) + min);
+            return attack;
+        }
+        else{
+            min = 40;
+            max = 80;
+            attack = (int) (Math.random() * (max - min + 1) + min);
+            return attack;
+        }
     }
     public int shield(){
         int shield = 0;
-        int min = 40;
-        int max = 80;
-        shield = (int) (Math.random()*(max-min+1)+min);
-        return shield;
+        int min = 0;
+        int max = 0;
+        if (dice.shinnyProbability() == 1) {
+            min = 75;
+            max = 80;
+            shield = (int) (Math.random() * (max - min + 1) + min);
+            return shield;
+        }
+        else{
+            min = 75;
+            max = 80;
+            shield = (int) (Math.random() * (max - min + 1) + min);
+            return shield;
+        }
     }
+
+
     public TYPES type(){
         int min = 1;
         int max = 6;
