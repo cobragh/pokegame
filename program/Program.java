@@ -41,7 +41,6 @@ public class Program {
                     System.out.print("Digite: ");
                     choise = sc.nextInt();
                 }
-
                 System.out.println("=========================================");
                 TYPES typeGen = statsGenerator.type();
                 TYPES type = typeGen;
@@ -53,7 +52,7 @@ public class Program {
                 System.out.println(pokemon);
                 pokedex.pokemons(pokemon.getName()); //Adicionando as informacoes para passar para a pokedex.
                 pokedexList.add(pokedex); //Adicionando o pokemon na lista da pokedex.
-
+//                pokedex.pokemonsAchados(); NOT WORKING...
                 System.out.println("=====================");
                 System.out.println("O que deseja fazer?");
                 System.out.println("1 - Batalhar");

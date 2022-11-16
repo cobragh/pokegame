@@ -12,17 +12,19 @@ public class Pokedex {
     private Double weight;
     private Double height;
     private TYPES weakness;
+    private Integer foundPokes;
 
 
     public Pokedex(){}
 
-    public Pokedex(NAMES name, TYPES type, String description, Double weight, Double height, TYPES weakness) {
+    public Pokedex(NAMES name, TYPES type, String description, Double weight, Double height, TYPES weakness, Integer foundPokes) {
         this.name = name;
         this.type = type;
         this.description = description;
         this.weight = weight;
         this.height = height;
         this.weakness = weakness;
+        this.foundPokes = foundPokes;
     }
 
     public NAMES getName() {
@@ -71,6 +73,14 @@ public class Pokedex {
 
     public void setWeakness(TYPES weakness) {
         this.weakness = weakness;
+    }
+
+    public Integer getFoundPokes() {
+        return foundPokes;
+    }
+
+    public void setFoundPokes(Integer foundPokes) {
+        this.foundPokes = foundPokes;
     }
 
     public void pokemons(NAMES name){
@@ -123,11 +133,16 @@ public class Pokedex {
 
 
     public void pokemonsAchados(){
-
+        setFoundPokes(getFoundPokes()+1);
     }
+
+
+
+
     @Override
     public String toString() {
         return
+                "Pokedex status: " + getFoundPokes() + "/XXX" +
                 "name = " + getName() +
                 ", type = " + type +
                 ", description = '" + description + '\'' +
