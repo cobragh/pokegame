@@ -3,6 +3,9 @@ package program.entities;
 import program.entities.types.enums.NAMES;
 import program.entities.types.enums.TYPES;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pokedex {
 
 //Aqui haverá uma lista com as características dos pokemons achados
@@ -12,19 +15,17 @@ public class Pokedex {
     private Double weight;
     private Double height;
     private TYPES weakness;
-    private Integer foundPokes;
 
 
     public Pokedex(){}
 
-    public Pokedex(NAMES name, TYPES type, String description, Double weight, Double height, TYPES weakness, Integer foundPokes) {
+    public Pokedex(NAMES name, TYPES type, String description, Double weight, Double height, TYPES weakness) {
         this.name = name;
         this.type = type;
         this.description = description;
         this.weight = weight;
         this.height = height;
         this.weakness = weakness;
-        this.foundPokes = foundPokes;
     }
 
     public NAMES getName() {
@@ -75,13 +76,7 @@ public class Pokedex {
         this.weakness = weakness;
     }
 
-    public Integer getFoundPokes() {
-        return foundPokes;
-    }
 
-    public void setFoundPokes(Integer foundPokes) {
-        this.foundPokes = foundPokes;
-    }
 
     public void pokemons(NAMES name){
 //      NORMAL
@@ -132,18 +127,23 @@ public class Pokedex {
 
 
 
-    public void pokemonsAchados(){
-        setFoundPokes(getFoundPokes()+1);
-    }
 
+
+    int found = 0;
+    public int pokemonsCount(Pokemon pokemon){
+        List<Pokemon> pokemonsCount = new ArrayList<>();
+        pokemonsCount.add(pokemon);
+        return found +=1;
+    }
 
 
 
     @Override
     public String toString() {
         return
-                "Pokedex status: " + getFoundPokes() + "/XXX" +
-                "name = " + getName() +
+                "Pokedex status: " +
+                "Achados: " + found + "/XXX" +
+                " name = " + getName() +
                 ", type = " + type +
                 ", description = '" + description + '\'' +
                 ", weight = " + weight + " kg" +

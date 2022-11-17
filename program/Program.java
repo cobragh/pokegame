@@ -65,6 +65,17 @@ public class Program {
                 }
             }
             while (choise == 2) {
+                TYPES typeGen = statsGenerator.type();
+                TYPES type = typeGen;
+                NAMES names = statsGenerator.name(type);
+                Pokemon pokemon = new Pokemon(statsGenerator.name(type),
+                        statsGenerator.saude(), statsGenerator.attack(), statsGenerator.shield(), type);
+                System.out.println("VOCÊ ACHOU UM " + pokemon.getName() + "!!!!");
+                System.out.println("Stats do pokemon achado:");
+                System.out.println(pokemon);
+                pokedex.pokemons(pokemon.getName()); //Adicionando as informacoes para passar para a pokedex.
+                pokedexList.add(pokedex);
+                pokedex.pokemonsCount(pokemon);
                 System.out.println(pokedexList);
                 System.out.println("=====================");
                 System.out.println("O que deseja fazer?");
