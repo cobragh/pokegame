@@ -1,4 +1,4 @@
-package pokemon.enums;
+package pokemon.components.enums;
 
 public enum Types {
     BUG,
@@ -18,5 +18,5 @@ public enum Types {
     POISON,
     ROCK,
     STEEL,
-    WATER;
+    WATER
 }

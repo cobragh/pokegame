@@ -1,4 +1,4 @@
-package pokemon.enums;
+package pokemon.components.enums;
 
 public enum Status {
     SLEEPING,
@@ -14,5 +14,5 @@ public enum Status {
     ACCURACY,
     EVASIVENESS,
     NONE,
-    CONFUSED;
+    CONFUSED
 }

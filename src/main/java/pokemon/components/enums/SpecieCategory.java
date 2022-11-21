@@ -1,4 +1,4 @@
-package pokemon.enums;
+package pokemon.components.enums;
 
 import java.util.Objects;
 
@@ -97,7 +97,6 @@ public enum SpecieCategory {
     FREEZE,
     GENETIC,
     NEW_SPECIES;
-    private SpecieCategory() {}
 
     public String getCategory() {
         String str = this.name();

@@ -1,26 +1,26 @@
-package pokemon;
+package pokemon.components;
 
-import pokemon.enums.SpecieCategory;
+import pokemon.components.enums.SpecieCategory;
 
 public class Specie {
     private long pokedexEntry;
-    private BaseStats baseStats;
-    private double weight;
+    private String name;
     private double height;
+    private double weight;
     private SpecieCategory specieCategory;
     private String description;
-    private String name;
+    private Stats<Integer> baseStat;
 
     public Specie() {}
 
-    public Specie(long pokedexEntry, BaseStats baseStats, double weight, double height, SpecieCategory specieCategory, String description, String name) {
+    public Specie(long pokedexEntry, String name, double height, double weight, SpecieCategory specieCategory, String description, Stats<Integer> baseStat) {
         this.pokedexEntry = pokedexEntry;
-        this.baseStats = baseStats;
-        this.weight = weight;
+        this.name = name;
         this.height = height;
+        this.weight = weight;
         this.specieCategory = specieCategory;
         this.description = description;
-        this.name = name;
+        this.baseStat = baseStat;
     }
 
     public long getPokedexEntry() {
@@ -31,12 +31,12 @@ public class Specie {
         this.pokedexEntry = pokedexEntry;
     }
 
-    public BaseStats getBaseStats() {
-        return baseStats;
+    public Stats<Integer> getBaseStats() {
+        return baseStat;
     }
 
-    public void setBaseStats(BaseStats baseStats) {
-        this.baseStats = baseStats;
+    public void setBaseStats(Stats<Integer> baseStat) {
+        this.baseStat = baseStat;
     }
 
     public double getWeight() {

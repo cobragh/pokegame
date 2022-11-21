@@ -1,31 +1,33 @@
 package pokemon;
 
-import battle.out.effectiveness.TypeEffectiveness;
-import pokemon.enums.*;
-
-import java.util.List;
+import pokemon.components.Attributes;
+import pokemon.components.Specie;
+import pokemon.components.enums.Genders;
+import pokemon.components.enums.Items;
 
 public class PocketMonster {
     private long id;
-    private Genders genders;
+    private String name;
+    private Genders gender;
+    private boolean shiny;
     private double happiness;
     private Specie specie;
-    private String name;
-    private Items heldItems;
+    private Items heldItem;
+    private Moves moves;
     private Attributes attributes;
-    private List<Move> moves;
 
     public PocketMonster() {}
 
-    public PocketMonster(long id, Genders genders, double happiness, Specie specie, String name, Items heldItems, Attributes attributes, List<Move> moves) {
+    public PocketMonster(long id, String name, Genders gender, boolean shiny, double happiness, Specie specie, Items heldItem, Moves moves, Attributes attributes) {
         this.id = id;
-        this.genders = genders;
+        this.name = name;
+        this.gender = gender;
+        this.shiny = shiny;
         this.happiness = happiness;
         this.specie = specie;
-        this.name = name;
-        this.heldItems = heldItems;
-        this.attributes = attributes;
+        this.heldItem = heldItem;
         this.moves = moves;
+        this.attributes = attributes;
     }
 
     public long getId() {
@@ -37,11 +39,19 @@ public class PocketMonster {
     }
 
     public Genders getGender() {
-        return genders;
+        return gender;
     }
 
-    public void setGender(Genders genders) {
-        this.genders = genders;
+    public boolean isShiny() {
+        return shiny;
+    }
+
+    public void setShiny(boolean shiny) {
+        this.shiny = shiny;
+    }
+
+    public void setGender(Genders gender) {
+        this.gender = gender;
     }
 
     public double getHappiness() {
@@ -69,11 +79,11 @@ public class PocketMonster {
     }
 
     public Items getHeldItem() {
-        return heldItems;
+        return heldItem;
     }
 
     public void setHeldItem(Items heldItems) {
-        this.heldItems = heldItems;
+        this.heldItem = heldItems;
     }
 
     public Attributes getAttributes() {
@@ -84,11 +94,11 @@ public class PocketMonster {
         this.attributes = attributes;
     }
 
-    public List<Move> getMoves() {
+    public Moves getMoves() {
         return moves;
     }
 
-    public void setMoves(List<Move> moves) {
+    public void setMoves(Moves moves) {
         this.moves = moves;
     }
 }

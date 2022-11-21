@@ -1,9 +1,9 @@
-package battle.out.effectiveness;
+package pokemon.calculator;
 
-import pokemon.Attributes;
+import pokemon.components.Attributes;
 
-public class AbilityEffectiveness {
-    public static void analysisAbilityEffectiveness(Attributes attributes) {
+public class AbilityEffectivenessManager {
+    public static void analyzeAbilityEffectiveness(Attributes attributes) {
         switch(attributes.getAbility()) {
             case FLASH_FIRE:
                 attributes.getEffectiveness().get(6).setEffectiveness(0.0);

@@ -1,4 +1,4 @@
-package pokemon.enums;
+package pokemon.components.enums;
 
 public enum Items {
     LEFTOVER,

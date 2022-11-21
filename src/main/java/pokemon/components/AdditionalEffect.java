@@ -1,6 +1,6 @@
-package pokemon;
+package pokemon.components;
 
-import pokemon.enums.Status;
+import pokemon.components.enums.Status;
 
 public class AdditionalEffect {
     private boolean hasAdditionalEffect;

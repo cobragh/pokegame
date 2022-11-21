@@ -1,6 +1,6 @@
-package pokemon;
+package pokemon.components;
 
-import pokemon.enums.Types;
+import pokemon.components.enums.Types;
 
 public class Effectiveness implements Comparable<Effectiveness> {
     private Types types;

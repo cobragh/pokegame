@@ -1,42 +1,46 @@
-package battle.out.effectiveness;
+package pokemon.calculator;
 
-import pokemon.Effectiveness;
-import pokemon.Attributes;
-import pokemon.enums.Types;
+import pokemon.components.Effectiveness;
+import pokemon.components.Attributes;
+import pokemon.components.enums.Types;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
 
-import static pokemon.enums.Types.BUG;
-import static pokemon.enums.Types.DARK;
-import static pokemon.enums.Types.DRAGON;
-import static pokemon.enums.Types.ELECTRIC;
-import static pokemon.enums.Types.FAIRY;
-import static pokemon.enums.Types.FIGHTING;
-import static pokemon.enums.Types.FIRE;
-import static pokemon.enums.Types.FLYING;
-import static pokemon.enums.Types.GHOST;
-import static pokemon.enums.Types.GRASS;
-import static pokemon.enums.Types.GROUND;
-import static pokemon.enums.Types.ICE;
-import static pokemon.enums.Types.NORMAL;
-import static pokemon.enums.Types.POISON;
-import static pokemon.enums.Types.PSYCHIC;
-import static pokemon.enums.Types.ROCK;
-import static pokemon.enums.Types.STEEL;
-import static pokemon.enums.Types.WATER;
+import static pokemon.components.enums.Types.BUG;
+import static pokemon.components.enums.Types.DARK;
+import static pokemon.components.enums.Types.DRAGON;
+import static pokemon.components.enums.Types.ELECTRIC;
+import static pokemon.components.enums.Types.FAIRY;
+import static pokemon.components.enums.Types.FIGHTING;
+import static pokemon.components.enums.Types.FIRE;
+import static pokemon.components.enums.Types.FLYING;
+import static pokemon.components.enums.Types.GHOST;
+import static pokemon.components.enums.Types.GRASS;
+import static pokemon.components.enums.Types.GROUND;
+import static pokemon.components.enums.Types.ICE;
+import static pokemon.components.enums.Types.NORMAL;
+import static pokemon.components.enums.Types.POISON;
+import static pokemon.components.enums.Types.PSYCHIC;
+import static pokemon.components.enums.Types.ROCK;
+import static pokemon.components.enums.Types.STEEL;
+import static pokemon.components.enums.Types.WATER;
 
-public class TypeEffectiveness {
+public class TypeEffectivenessManager {
     private static final int MONOTYPE = 1;
 
-    public static void setEffectiveness(Attributes attributes) {
+    public static void typeEffectivenessCalculator(Attributes attributes) {
         if (Objects.equals(attributes.getType().size(), MONOTYPE)) {
             attributes.setEffectiveness(getMonoTypeEffectiveness(attributes));
         } else {
-            setDualTypeWeaknesses(attributes);
+            setDualTypeEffectiveness(attributes);
         }
     }
 
-    public static void setDualTypeWeaknesses(Attributes attributes) {
+    private static void setDualTypeEffectiveness(Attributes attributes) {
         attributes.setEffectiveness(getMonoTypeEffectiveness(attributes));
         for (int i = 0; i<attributes.getEffectiveness().size(); i++) {
             for (int j = i+1; j<attributes.getEffectiveness().size(); j++) {
@@ -49,9 +53,10 @@ public class TypeEffectiveness {
         }
     }
 
-    public static List<Effectiveness> getMonoTypeEffectiveness(Attributes attributes) {
+    private static List<Effectiveness> getMonoTypeEffectiveness(Attributes attributes) {
         List<Effectiveness> effectiveness = new ArrayList<>();
         attributes.getType().forEach(types -> {
+            
             switch (types) {
                 case FIRE:
                     effectiveness.addAll(arrangeEffectiveness(
@@ -200,11 +205,9 @@ public class TypeEffectiveness {
 
     private static List<Effectiveness> arrangeEffectiveness(List<Effectiveness>... effectiveness) {
         List<Effectiveness> effectivenessList = new ArrayList<>();
-        Arrays.stream(effectiveness).forEach(effectivenessLevel -> effectivenessLevel.forEach(
-                effectivenessInstance -> effectivenessList.add(effectivenessInstance)
-        ));
+        Arrays.stream(effectiveness).forEach(effectivenessList::addAll);
 
-        Collections.sort(effectivenessList, Collections.reverseOrder());
+        effectivenessList.sort(Collections.reverseOrder());
         return effectivenessList;
     }
 }

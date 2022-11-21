@@ -1,4 +1,4 @@
-package pokemon.enums;
+package pokemon.components.enums;
 
 public enum Natures {
     ADAMANT,
@@ -25,5 +25,5 @@ public enum Natures {
     RELAXED,
     SASSY,
     SERIOUS,
-    TIMID;
+    TIMID
 }

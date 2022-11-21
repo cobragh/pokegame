@@ -1,27 +1,27 @@
-package pokemon;
+package pokemon.components;
 
-import pokemon.enums.MoveCategory;
-import pokemon.enums.Types;
+import pokemon.components.enums.MoveCategory;
+import pokemon.components.enums.Types;
 
 public class Move {
     private String name;
     private Types types;
-    private MoveCategory category;
-    private AdditionalEffect additionalEffect;
     private int pp;
     private double power;
     private double accuracy;
+    private MoveCategory category;
+    private AdditionalEffect additionalEffect;
 
     public Move() {}
 
-    public Move(String name, Types types, MoveCategory category, AdditionalEffect additionalEffect, int pp, double power, double accuracy) {
+    public Move(String name, Types types, int pp, double power, double accuracy, MoveCategory category, AdditionalEffect additionalEffect) {
         this.name = name;
         this.types = types;
-        this.category = category;
-        this.additionalEffect = additionalEffect;
         this.pp = pp;
         this.power = power;
         this.accuracy = accuracy;
+        this.category = category;
+        this.additionalEffect = additionalEffect;
     }
 
     public String getName() {
