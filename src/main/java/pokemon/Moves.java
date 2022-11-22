@@ -2,6 +2,8 @@ package pokemon;
 
 import pokemon.components.Move;
 
+import java.util.List;
+
 public class Moves {
     private Move firstMove;
     private Move secondMove;
@@ -47,5 +49,9 @@ public class Moves {
 
     public void setFourthMove(Move fourthMove) {
         this.fourthMove = fourthMove;
+    }
+
+    public List<Move> getMoveList() {
+        return List.of(firstMove, secondMove, thirdMove, fourthMove);
     }
 }

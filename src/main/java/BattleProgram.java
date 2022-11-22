@@ -1,3 +1,10 @@
+import battle.Battle;
+import battle.in.BattleField;
+import battle.in.Team;
+import battle.in.Turn;
+import battle.in.enums.Terrain;
+import battle.in.enums.TurnStage;
+import battle.in.enums.Weather;
 import pokemon.Moves;
 import pokemon.PocketMonster;
 import pokemon.calculator.AttributeManager;
@@ -17,7 +24,7 @@ import pokemon.components.enums.Types;
 
 import java.util.List;
 
-public class Battle {
+public class BattleProgram {
     public static void main(String[] args) {
         Stats<Integer> charizardStats = new Stats<>(78, 84, 109, 78, 85, 100);
         Specie charizardSpecie = new Specie(006, "Charizard", 1.7, 90.5, SpecieCategory.DRAGON, "It is said that Charizard's fire burns hotter if it has experienced harsh battles.", charizardStats);
@@ -28,6 +35,26 @@ public class Battle {
         PocketMonster charizard = new PocketMonster(1L, "Charizard", Genders.MALE, true, 255d, charizardSpecie, Items.ASPEAR_BERRY, charizardMoves, charizardAttributes);
         TypeEffectivenessManager.typeEffectivenessCalculator(charizard.getAttributes());
         AttributeManager.attributeCalculator(charizard.getSpecie().getBaseStats(), charizard.getAttributes());
+        Team playerTeam = new Team();
+        playerTeam.setActivePokemon(charizard);
+
+        Stats<Integer> venusaurStats = new Stats<>(80, 82, 100, 83, 100, 80);
+        Specie venusaurSpecie = new Specie(003, "Venusaur", 2d, 100d, SpecieCategory.SEED, "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.", venusaurStats);
+        Moves venusaurMoves = charizardMoves;
+        Stats<BaseStat> venusaurStat = new Stats<>(new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31));
+        Level venusaurLevel = new Level(50, 0, 0, 0);
+        Attributes venusaurAttributes = new Attributes(Abilities.OVERGROW, venusaurLevel, List.of(Types.GRASS, Types.POISON), null, venusaurStat, Natures.ADAMANT);
+        PocketMonster venusaur = new PocketMonster(2L, "Venusaur", Genders.FEMALE, false, 255d, venusaurSpecie, Items.ASPEAR_BERRY, venusaurMoves, venusaurAttributes);
+        TypeEffectivenessManager.typeEffectivenessCalculator(venusaur.getAttributes());
+        AttributeManager.attributeCalculator(venusaur.getSpecie().getBaseStats(), venusaur.getAttributes());
+        Team enemyTeam = new Team();
+        enemyTeam.setActivePokemon(venusaur);
+
+        BattleField battleField = new BattleField(Weather.CLEAR_SKIES, Weather.CLEAR_SKIES, Terrain.DEFAULT, playerTeam.getActivePokemon(), enemyTeam.getActivePokemon());
+        Turn turn = new Turn(1, TurnStage.PRE_TURN);
+        Battle battle = new Battle(playerTeam, enemyTeam, battleField, turn);
+
         System.out.println(charizard);
+        System.out.println(venusaur);
     }
 }

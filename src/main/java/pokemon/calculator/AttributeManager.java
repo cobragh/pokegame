@@ -9,13 +9,14 @@ public class AttributeManager {
     public static void attributeCalculator(Stats<Integer> specieStats, Attributes attributes) {
         int level = attributes.getLevel().getLevel();
 
-        attributes.getStats().getHp().setActualValue(lifeStatCalculator(specieStats, attributes.getStats().getHp(), level));
-        attributes.getStats().getAttack().setActualValue(statCalculator(specieStats.getAttack(), attributes.getStats().getAttack(), level));
-        attributes.getStats().getDefense().setActualValue(statCalculator(specieStats.getDefense(), attributes.getStats().getDefense(), level));
-        attributes.getStats().getSpecialAttack().setActualValue(statCalculator(specieStats.getSpecialAttack(), attributes.getStats().getSpecialAttack(), level));
-        attributes.getStats().getSpecialDefense().setActualValue(statCalculator(specieStats.getSpecialDefense(), attributes.getStats().getSpecialDefense(), level));
-        attributes.getStats().getSpeed().setActualValue(statCalculator(specieStats.getSpeed(), attributes.getStats().getSpeed(), level));
+        attributes.getStats().getHp().setBaseValue(lifeStatCalculator(specieStats, attributes.getStats().getHp(), level));
+        attributes.getStats().getAttack().setBaseValue(statCalculator(specieStats.getAttack(), attributes.getStats().getAttack(), level));
+        attributes.getStats().getDefense().setBaseValue(statCalculator(specieStats.getDefense(), attributes.getStats().getDefense(), level));
+        attributes.getStats().getSpecialAttack().setBaseValue(statCalculator(specieStats.getSpecialAttack(), attributes.getStats().getSpecialAttack(), level));
+        attributes.getStats().getSpecialDefense().setBaseValue(statCalculator(specieStats.getSpecialDefense(), attributes.getStats().getSpecialDefense(), level));
+        attributes.getStats().getSpeed().setBaseValue(statCalculator(specieStats.getSpeed(), attributes.getStats().getSpeed(), level));
         natureStatsMultiplier(attributes.getNature(), attributes);
+        setInitialActualValue(attributes.getStats());
     }
 
     private static double statCalculator(int specieStat, BaseStat baseStat, int level) {
@@ -45,93 +46,102 @@ public class AttributeManager {
             case HARDY:
                 break;
             case LAX:
-                stats.getDefense().setActualValue(increaseStatCalculate(stats.getDefense().getActualValue()));
-                stats.getSpecialDefense().setActualValue(decreaseStatCalculate(stats.getSpecialDefense().getActualValue()));
+                stats.getDefense().setBaseValue(increaseStatCalculate(stats.getDefense().getBaseValue()));
+                stats.getSpecialDefense().setBaseValue(decreaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
                 break;
             case ADAMANT:
-                stats.getAttack().setActualValue(increaseStatCalculate(stats.getAttack().getActualValue()));
-                stats.getSpecialAttack().setActualValue(decreaseStatCalculate(stats.getSpecialAttack().getActualValue()));
+                stats.getAttack().setBaseValue(increaseStatCalculate(stats.getAttack().getBaseValue()));
+                stats.getSpecialAttack().setBaseValue(decreaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
                 break;
             case LONELY:
-                stats.getAttack().setActualValue(increaseStatCalculate(stats.getAttack().getActualValue()));
-                stats.getDefense().setActualValue(decreaseStatCalculate(stats.getDefense().getActualValue()));
+                stats.getAttack().setBaseValue(increaseStatCalculate(stats.getAttack().getBaseValue()));
+                stats.getDefense().setBaseValue(decreaseStatCalculate(stats.getDefense().getBaseValue()));
                 break;
             case CAREFUL:
-                stats.getSpecialDefense().setActualValue(increaseStatCalculate(stats.getSpecialDefense().getActualValue()));
-                stats.getSpecialAttack().setActualValue(decreaseStatCalculate(stats.getSpecialAttack().getActualValue()));
+                stats.getSpecialDefense().setBaseValue(increaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
+                stats.getSpecialAttack().setBaseValue(decreaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
                 break;
             case HASTY:
-                stats.getSpeed().setActualValue(increaseStatCalculate(stats.getSpeed().getActualValue()));
-                stats.getDefense().setActualValue(decreaseStatCalculate(stats.getDefense().getActualValue()));
+                stats.getSpeed().setBaseValue(increaseStatCalculate(stats.getSpeed().getBaseValue()));
+                stats.getDefense().setBaseValue(decreaseStatCalculate(stats.getDefense().getBaseValue()));
                 break;
             case IMPISH:
-                stats.getDefense().setActualValue(increaseStatCalculate(stats.getDefense().getActualValue()));
-                stats.getSpecialAttack().setActualValue(decreaseStatCalculate(stats.getSpecialAttack().getActualValue()));
+                stats.getDefense().setBaseValue(increaseStatCalculate(stats.getDefense().getBaseValue()));
+                stats.getSpecialAttack().setBaseValue(decreaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
                 break;
             case BOLD:
-                stats.getDefense().setActualValue(increaseStatCalculate(stats.getDefense().getActualValue()));
-                stats.getAttack().setActualValue(decreaseStatCalculate(stats.getAttack().getActualValue()));
+                stats.getDefense().setBaseValue(increaseStatCalculate(stats.getDefense().getBaseValue()));
+                stats.getAttack().setBaseValue(decreaseStatCalculate(stats.getAttack().getBaseValue()));
                 break;
             case MILD:
-                stats.getSpecialAttack().setActualValue(increaseStatCalculate(stats.getSpecialAttack().getActualValue()));
-                stats.getDefense().setActualValue(decreaseStatCalculate(stats.getDefense().getActualValue()));
+                stats.getSpecialAttack().setBaseValue(increaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
+                stats.getDefense().setBaseValue(decreaseStatCalculate(stats.getDefense().getBaseValue()));
                 break;
             case JOLLY:
-                 stats.getSpeed().setActualValue(increaseStatCalculate(stats.getSpeed().getActualValue()));
-                stats.getSpecialAttack().setActualValue(decreaseStatCalculate(stats.getSpecialAttack().getActualValue()));
+                 stats.getSpeed().setBaseValue(increaseStatCalculate(stats.getSpeed().getBaseValue()));
+                stats.getSpecialAttack().setBaseValue(decreaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
                 break;
             case RELAXED:
-                stats.getDefense().setActualValue(increaseStatCalculate(stats.getDefense().getActualValue()));
-                stats.getSpeed().setActualValue(decreaseStatCalculate(stats.getSpeed().getActualValue()));
+                stats.getDefense().setBaseValue(increaseStatCalculate(stats.getDefense().getBaseValue()));
+                stats.getSpeed().setBaseValue(decreaseStatCalculate(stats.getSpeed().getBaseValue()));
                 break;
             case GENTLE:
-                stats.getSpecialDefense().setActualValue(increaseStatCalculate(stats.getSpecialDefense().getActualValue()));
-                stats.getDefense().setActualValue(decreaseStatCalculate(stats.getDefense().getActualValue()));
+                stats.getSpecialDefense().setBaseValue(increaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
+                stats.getDefense().setBaseValue(decreaseStatCalculate(stats.getDefense().getBaseValue()));
                 break;
             case TIMID:
-                stats.getSpeed().setActualValue(increaseStatCalculate(stats.getSpeed().getActualValue()));
-                stats.getAttack().setActualValue(decreaseStatCalculate(stats.getAttack().getActualValue()));
+                stats.getSpeed().setBaseValue(increaseStatCalculate(stats.getSpeed().getBaseValue()));
+                stats.getAttack().setBaseValue(decreaseStatCalculate(stats.getAttack().getBaseValue()));
                 break;
             case SASSY:
-                stats.getSpecialDefense().setActualValue(increaseStatCalculate(stats.getSpecialDefense().getActualValue()));
-                stats.getSpeed().setActualValue(decreaseStatCalculate(stats.getSpeed().getActualValue()));
+                stats.getSpecialDefense().setBaseValue(increaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
+                stats.getSpeed().setBaseValue(decreaseStatCalculate(stats.getSpeed().getBaseValue()));
                 break;
             case RASH:
-                stats.getSpecialAttack().setActualValue(increaseStatCalculate(stats.getSpecialAttack().getActualValue()));
-                stats.getSpecialDefense().setActualValue(decreaseStatCalculate(stats.getSpecialDefense().getActualValue()));
+                stats.getSpecialAttack().setBaseValue(increaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
+                stats.getSpecialDefense().setBaseValue(decreaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
                 break;
             case NAUGHTY:
-                stats.getAttack().setActualValue(increaseStatCalculate(stats.getAttack().getActualValue()));
-                stats.getSpecialDefense().setActualValue(decreaseStatCalculate(stats.getSpecialDefense().getActualValue()));
+                stats.getAttack().setBaseValue(increaseStatCalculate(stats.getAttack().getBaseValue()));
+                stats.getSpecialDefense().setBaseValue(decreaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
                 break;
             case NAIVE:
-                stats.getSpeed().setActualValue(increaseStatCalculate(stats.getSpeed().getActualValue()));
-                stats.getSpecialDefense().setActualValue(decreaseStatCalculate(stats.getSpecialDefense().getActualValue()));
+                stats.getSpeed().setBaseValue(increaseStatCalculate(stats.getSpeed().getBaseValue()));
+                stats.getSpecialDefense().setBaseValue(decreaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
                 break;
             case BRAVE:
-                stats.getAttack().setActualValue(increaseStatCalculate(stats.getAttack().getActualValue()));
-                stats.getSpeed().setActualValue(decreaseStatCalculate(stats.getSpeed().getActualValue()));
+                stats.getAttack().setBaseValue(increaseStatCalculate(stats.getAttack().getBaseValue()));
+                stats.getSpeed().setBaseValue(decreaseStatCalculate(stats.getSpeed().getBaseValue()));
                 break;
             case CALM:
-                stats.getSpecialDefense().setActualValue(increaseStatCalculate(stats.getSpecialDefense().getActualValue()));
-                stats.getAttack().setActualValue(decreaseStatCalculate(stats.getAttack().getActualValue()));
+                stats.getSpecialDefense().setBaseValue(increaseStatCalculate(stats.getSpecialDefense().getBaseValue()));
+                stats.getAttack().setBaseValue(decreaseStatCalculate(stats.getAttack().getBaseValue()));
                 break;
             case MODEST:
-                stats.getSpecialAttack().setActualValue(increaseStatCalculate(stats.getSpecialAttack().getActualValue()));
-                stats.getAttack().setActualValue(decreaseStatCalculate(stats.getAttack().getActualValue()));
+                stats.getSpecialAttack().setBaseValue(increaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
+                stats.getAttack().setBaseValue(decreaseStatCalculate(stats.getAttack().getBaseValue()));
                 break;
             case QUIET:
-                stats.getSpecialAttack().setActualValue(increaseStatCalculate(stats.getSpecialAttack().getActualValue()));
-                stats.getSpeed().setActualValue(decreaseStatCalculate(stats.getSpeed().getActualValue()));
+                stats.getSpecialAttack().setBaseValue(increaseStatCalculate(stats.getSpecialAttack().getBaseValue()));
+                stats.getSpeed().setBaseValue(decreaseStatCalculate(stats.getSpeed().getBaseValue()));
                 break;
         }
     }
 
-    private static double increaseStatCalculate(double actualValue) {
-        return actualValue * 1.1;
+    private static double increaseStatCalculate(double baseValue) {
+        return baseValue * 1.1;
     }
 
-    private static double decreaseStatCalculate(double actualValue) {
-        return actualValue * 0.9;
+    private static double decreaseStatCalculate(double baseValue) {
+        return baseValue * 0.9;
+    }
+
+    private static void setInitialActualValue(Stats<BaseStat> stats) {
+        stats.getHp().setActualValue(stats.getHp().getBaseValue());
+        stats.getSpeed().setActualValue(stats.getSpeed().getBaseValue());
+        stats.getDefense().setActualValue(stats.getDefense().getBaseValue());
+        stats.getAttack().setActualValue(stats.getAttack().getBaseValue());
+        stats.getSpecialDefense().setActualValue(stats.getSpecialDefense().getBaseValue());
+        stats.getSpecialAttack().setActualValue(stats.getSpecialAttack().getBaseValue());
     }
 }

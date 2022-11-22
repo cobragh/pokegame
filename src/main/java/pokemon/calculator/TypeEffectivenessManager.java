@@ -28,6 +28,10 @@ import static pokemon.components.enums.Types.PSYCHIC;
 import static pokemon.components.enums.Types.ROCK;
 import static pokemon.components.enums.Types.STEEL;
 import static pokemon.components.enums.Types.WATER;
+import static utils.CalculatorConstants.DEFAULT;
+import static utils.CalculatorConstants.DOUBLE;
+import static utils.CalculatorConstants.HALF;
+import static utils.CalculatorConstants.ZERO;
 
 public class TypeEffectivenessManager {
     private static final int MONOTYPE = 1;
@@ -60,134 +64,134 @@ public class TypeEffectivenessManager {
             switch (types) {
                 case FIRE:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, WATER, GROUND, ROCK),
-                            setEffectivenessType(0.5, BUG, STEEL, FIRE, GRASS, ICE, FAIRY),
-                            setEffectivenessType(1.0, DARK, DRAGON, ELECTRIC, FIGHTING, FLYING, GHOST, NORMAL, PSYCHIC, POISON)
+                            setEffectivenessType(DOUBLE, WATER, GROUND, ROCK),
+                            setEffectivenessType(HALF, BUG, STEEL, FIRE, GRASS, ICE, FAIRY),
+                            setEffectivenessType(DEFAULT, DARK, DRAGON, ELECTRIC, FIGHTING, FLYING, GHOST, NORMAL, PSYCHIC, POISON)
                     ));
                     break;
                 case WATER:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, ELECTRIC, GRASS),
-                            setEffectivenessType(0.5, STEEL, FIRE, WATER, ICE),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, FAIRY, FIGHTING, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, POISON, ROCK)
+                            setEffectivenessType(DOUBLE, ELECTRIC, GRASS),
+                            setEffectivenessType(HALF, STEEL, FIRE, WATER, ICE),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, FAIRY, FIGHTING, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, POISON, ROCK)
                     ));
                     break;
                 case STEEL:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FIGHTING, GROUND, FIRE),
-                            setEffectivenessType(0.5, NORMAL, FLYING, ROCK, BUG, STEEL, GRASS, PSYCHIC, ICE, DRAGON, FAIRY),
-                            setEffectivenessType(0.0, POISON),
-                            setEffectivenessType(1.0, DARK, ELECTRIC, GHOST, WATER)
+                            setEffectivenessType(DOUBLE, FIGHTING, GROUND, FIRE),
+                            setEffectivenessType(HALF, NORMAL, FLYING, ROCK, BUG, STEEL, GRASS, PSYCHIC, ICE, DRAGON, FAIRY),
+                            setEffectivenessType(ZERO, POISON),
+                            setEffectivenessType(DEFAULT, DARK, ELECTRIC, GHOST, WATER)
                     ));
                     break;
                 case ROCK:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FIGHTING, GROUND, STEEL, WATER, GRASS),
-                            setEffectivenessType(0.5, NORMAL, FLYING, POISON, FIRE),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, ELECTRIC, FAIRY, GHOST, ICE, PSYCHIC, ROCK)
+                            setEffectivenessType(DOUBLE, FIGHTING, GROUND, STEEL, WATER, GRASS),
+                            setEffectivenessType(HALF, NORMAL, FLYING, POISON, FIRE),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, ELECTRIC, FAIRY, GHOST, ICE, PSYCHIC, ROCK)
                     ));
                     break;
                 case PSYCHIC:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, BUG, GHOST, DARK),
-                            setEffectivenessType(0.5, FIGHTING, PSYCHIC),
-                            setEffectivenessType(1.0, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, POISON, ROCK, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, BUG, GHOST, DARK),
+                            setEffectivenessType(HALF, FIGHTING, PSYCHIC),
+                            setEffectivenessType(DEFAULT, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, POISON, ROCK, STEEL, WATER)
                     ));
                     break;
                 case POISON:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, GROUND, PSYCHIC),
-                            setEffectivenessType(0.5, FIGHTING, POISON, GRASS, FAIRY),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, ELECTRIC, FIRE, FLYING, GHOST, ICE, NORMAL, ROCK, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, GROUND, PSYCHIC),
+                            setEffectivenessType(HALF, FIGHTING, POISON, GRASS, FAIRY),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, ELECTRIC, FIRE, FLYING, GHOST, ICE, NORMAL, ROCK, STEEL, WATER)
                     ));
                     break;
                 case NORMAL:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FIGHTING),
-                            setEffectivenessType(0.0, GHOST),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, PSYCHIC, POISON, ROCK, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, FIGHTING),
+                            setEffectivenessType(ZERO, GHOST),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, PSYCHIC, POISON, ROCK, STEEL, WATER)
                     ));
                     break;
                 case ICE:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FIGHTING, ROCK, STEEL, FIRE),
-                            setEffectivenessType(0.5, ICE),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FLYING, GHOST, GRASS, GROUND, NORMAL, PSYCHIC, POISON, WATER)
+                            setEffectivenessType(DOUBLE, FIGHTING, ROCK, STEEL, FIRE),
+                            setEffectivenessType(HALF, ICE),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, ELECTRIC, FAIRY, FLYING, GHOST, GRASS, GROUND, NORMAL, PSYCHIC, POISON, WATER)
                     ));
                     break;
                 case GROUND:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, WATER, GRASS, ICE),
-                            setEffectivenessType(0.5, POISON, ROCK),
-                            setEffectivenessType(0.0, ELECTRIC),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, FAIRY, FIGHTING, FIRE, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, STEEL)
+                            setEffectivenessType(DOUBLE, WATER, GRASS, ICE),
+                            setEffectivenessType(HALF, POISON, ROCK),
+                            setEffectivenessType(ZERO, ELECTRIC),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, FAIRY, FIGHTING, FIRE, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, STEEL)
                     ));
                     break;
                 case GRASS:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FLYING, POISON, BUG, FIRE, ICE),
-                            setEffectivenessType(0.5, GROUND, WATER, GRASS, ELECTRIC),
-                            setEffectivenessType(1.0, DARK, DRAGON, FAIRY, FIGHTING, GHOST, NORMAL, PSYCHIC, ROCK, STEEL)
+                            setEffectivenessType(DOUBLE, FLYING, POISON, BUG, FIRE, ICE),
+                            setEffectivenessType(HALF, GROUND, WATER, GRASS, ELECTRIC),
+                            setEffectivenessType(DEFAULT, DARK, DRAGON, FAIRY, FIGHTING, GHOST, NORMAL, PSYCHIC, ROCK, STEEL)
                     ));
                     break;
                 case GHOST:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, GHOST, DARK),
-                            setEffectivenessType(0.5, POISON, BUG),
-                            setEffectivenessType(0.0, NORMAL, FIGHTING),
-                            setEffectivenessType(1.0, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, PSYCHIC, ROCK, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, GHOST, DARK),
+                            setEffectivenessType(HALF, POISON, BUG),
+                            setEffectivenessType(ZERO, NORMAL, FIGHTING),
+                            setEffectivenessType(DEFAULT, DRAGON, ELECTRIC, FAIRY, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, PSYCHIC, ROCK, STEEL, WATER)
                     ));
                     break;
                 case FLYING:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, ROCK, ELECTRIC, ICE),
-                            setEffectivenessType(0.5, FIGHTING, BUG, GRASS),
-                            setEffectivenessType(0.0, GROUND),
-                            setEffectivenessType(1.0, DARK, DRAGON, FAIRY, FIRE, FLYING, GHOST, NORMAL, PSYCHIC, POISON, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, ROCK, ELECTRIC, ICE),
+                            setEffectivenessType(HALF, FIGHTING, BUG, GRASS),
+                            setEffectivenessType(ZERO, GROUND),
+                            setEffectivenessType(DEFAULT, DARK, DRAGON, FAIRY, FIRE, FLYING, GHOST, NORMAL, PSYCHIC, POISON, STEEL, WATER)
                     ));
                     break;
                 case FIGHTING:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FLYING, PSYCHIC, FAIRY),
-                            setEffectivenessType(0.5, ROCK, BUG, DARK),
-                            setEffectivenessType(1.0, DRAGON, ELECTRIC, FIGHTING, FIRE, GHOST, GRASS, GROUND, ICE, NORMAL, POISON, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, FLYING, PSYCHIC, FAIRY),
+                            setEffectivenessType(HALF, ROCK, BUG, DARK),
+                            setEffectivenessType(DEFAULT, DRAGON, ELECTRIC, FIGHTING, FIRE, GHOST, GRASS, GROUND, ICE, NORMAL, POISON, STEEL, WATER)
                     ));
                     break;
                 case FAIRY:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, POISON, STEEL),
-                            setEffectivenessType(0.5, FIGHTING, BUG, DARK),
-                            setEffectivenessType(0.0, DRAGON),
-                            setEffectivenessType(1.0, ELECTRIC, FAIRY, FIRE, FLYING, GHOST, GRASS, GROUND, ICE, NORMAL, PSYCHIC, ROCK, WATER)
+                            setEffectivenessType(DOUBLE, POISON, STEEL),
+                            setEffectivenessType(HALF, FIGHTING, BUG, DARK),
+                            setEffectivenessType(ZERO, DRAGON),
+                            setEffectivenessType(DEFAULT, ELECTRIC, FAIRY, FIRE, FLYING, GHOST, GRASS, GROUND, ICE, NORMAL, PSYCHIC, ROCK, WATER)
                     ));
                     break;
                 case ELECTRIC:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, GROUND),
-                            setEffectivenessType(0.5, FLYING, STEEL, ELECTRIC),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, FAIRY, FIGHTING, FIRE, GHOST, GRASS, ICE, NORMAL, PSYCHIC, POISON, ROCK, WATER)
+                            setEffectivenessType(DOUBLE, GROUND),
+                            setEffectivenessType(HALF, FLYING, STEEL, ELECTRIC),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, FAIRY, FIGHTING, FIRE, GHOST, GRASS, ICE, NORMAL, PSYCHIC, POISON, ROCK, WATER)
                     ));
                     break;
                 case DRAGON:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, ICE, DRAGON, FAIRY),
-                            setEffectivenessType(0.5, FIRE, WATER, GRASS, ELECTRIC),
-                            setEffectivenessType(1.0, BUG, DARK, FIGHTING, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, POISON, ROCK, STEEL)
+                            setEffectivenessType(DOUBLE, ICE, DRAGON, FAIRY),
+                            setEffectivenessType(HALF, FIRE, WATER, GRASS, ELECTRIC),
+                            setEffectivenessType(DEFAULT, BUG, DARK, FIGHTING, FLYING, GHOST, GROUND, NORMAL, PSYCHIC, POISON, ROCK, STEEL)
                     ));
                     break;
                 case DARK:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FIGHTING, BUG, FAIRY),
-                            setEffectivenessType(0.5, GHOST, DARK),
-                            setEffectivenessType(0.0, PSYCHIC),
-                            setEffectivenessType(1.0, DRAGON, ELECTRIC, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, POISON, ROCK, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, FIGHTING, BUG, FAIRY),
+                            setEffectivenessType(HALF, GHOST, DARK),
+                            setEffectivenessType(ZERO, PSYCHIC),
+                            setEffectivenessType(DEFAULT, DRAGON, ELECTRIC, FIRE, FLYING, GRASS, GROUND, ICE, NORMAL, POISON, ROCK, STEEL, WATER)
                     ));
                     break;
                 case BUG:
                     effectiveness.addAll(arrangeEffectiveness(
-                            setEffectivenessType(2.0, FLYING, ROCK, FIRE),
-                            setEffectivenessType(0.5, FIGHTING, GROUND, GRASS),
-                            setEffectivenessType(1.0, BUG, DARK, DRAGON, ELECTRIC, FAIRY, GHOST, ICE, NORMAL, PSYCHIC, POISON, STEEL, WATER)
+                            setEffectivenessType(DOUBLE, FLYING, ROCK, FIRE),
+                            setEffectivenessType(HALF, FIGHTING, GROUND, GRASS),
+                            setEffectivenessType(DEFAULT, BUG, DARK, DRAGON, ELECTRIC, FAIRY, GHOST, ICE, NORMAL, PSYCHIC, POISON, STEEL, WATER)
                     ));
                     break;
             }
