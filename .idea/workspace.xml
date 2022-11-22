@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c229420-48ab-4748-9d1d-1fbf71a63952" name="Changes" comment="WeatherCycle added">
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AttributeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AttributeManager.java" afterDir="false" />
-    </list>
+    <list default="true" id="5c229420-48ab-4748-9d1d-1fbf71a63952" name="Changes" comment="refactor" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +129,7 @@
       <workItem from="1668817055956" duration="14943000" />
       <workItem from="1668897750755" duration="1622000" />
       <workItem from="1669035106041" duration="32613000" />
-      <workItem from="1669122853620" duration="15326000" />
+      <workItem from="1669122853620" duration="15652000" />
     </task>
     <task id="LOCAL-00001" summary="WeatherCycle added">
       <created>1669138447623</created>
@@ -140,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669138447623</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor">
+      <created>1669138774621</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669138774621</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +165,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="attribute manager added" />
     <MESSAGE value="WeatherCycle added" />
-    <option name="LAST_COMMIT_MESSAGE" value="WeatherCycle added" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -173,6 +179,11 @@
           <properties class="java.lang.ClassCastException" package="java.lang" />
           <option name="timeStamp" value="32" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/BattleProgram.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
