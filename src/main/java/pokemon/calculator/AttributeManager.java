@@ -6,6 +6,9 @@ import pokemon.components.Stats;
 import pokemon.components.enums.Natures;
 
 public class AttributeManager {
+    private static final double INCREASE_MULTIPLIER = 1.1;
+    private static final double DECREASE_MULTIPLIER = 0.9;
+
     public static void attributeCalculator(Stats<Integer> specieStats, Attributes attributes) {
         int level = attributes.getLevel().getLevel();
 
@@ -129,11 +132,11 @@ public class AttributeManager {
     }
 
     private static double increaseStatCalculate(double baseValue) {
-        return baseValue * 1.1;
+        return baseValue * INCREASE_MULTIPLIER;
     }
 
     private static double decreaseStatCalculate(double baseValue) {
-        return baseValue * 0.9;
+        return baseValue * DECREASE_MULTIPLIER;
     }
 
     private static void setInitialActualValue(Stats<BaseStat> stats) {

@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c229420-48ab-4748-9d1d-1fbf71a63952" name="Changes" comment="attribute manager added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/Battle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/director/TurnCycleDirector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/director/WeatherCycleDirector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/BattleField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/Team.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/Turn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/enums/Terrain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/enums/TurnStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battle/in/enums/Weather.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/CalculatorConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BattleProgram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/Moves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/Moves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AbilityEffectivenessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AbilityEffectivenessManager.java" afterDir="false" />
+    <list default="true" id="5c229420-48ab-4748-9d1d-1fbf71a63952" name="Changes" comment="WeatherCycle added">
       <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AttributeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/calculator/AttributeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/calculator/TypeEffectivenessManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/calculator/TypeEffectivenessManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/components/BaseStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/components/BaseStat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pokemon/components/enums/Abilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pokemon/components/enums/Abilities.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,8 +131,16 @@
       <workItem from="1668817055956" duration="14943000" />
       <workItem from="1668897750755" duration="1622000" />
       <workItem from="1669035106041" duration="32613000" />
-      <workItem from="1669122853620" duration="14856000" />
+      <workItem from="1669122853620" duration="15326000" />
     </task>
+    <task id="LOCAL-00001" summary="WeatherCycle added">
+      <created>1669138447623</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669138447623</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +159,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="attribute manager added" />
-    <option name="LAST_COMMIT_MESSAGE" value="attribute manager added" />
+    <MESSAGE value="WeatherCycle added" />
+    <option name="LAST_COMMIT_MESSAGE" value="WeatherCycle added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
