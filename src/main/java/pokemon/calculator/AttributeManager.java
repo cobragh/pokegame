@@ -5,6 +5,9 @@ import pokemon.components.BaseStat;
 import pokemon.components.Stats;
 import pokemon.components.enums.Natures;
 
+import static utils.CalculatorUtils.basicAttributeFormula;
+import static utils.CalculatorUtils.lifeAttributeFormula;
+
 public class AttributeManager {
     private static final double INCREASE_MULTIPLIER = 1.1;
     private static final double DECREASE_MULTIPLIER = 0.9;
@@ -23,19 +26,11 @@ public class AttributeManager {
     }
 
     private static double statCalculator(int specieStat, BaseStat baseStat, int level) {
-        double stat = 2 * specieStat;
-        stat = stat + baseStat.getEffortValue() / 4d;
-        stat = stat + baseStat.getIndividualValue() + 2d;
-        stat = stat * (double) level / 100d;
-        return stat + 5;
+        return basicAttributeFormula(specieStat, baseStat.getEffortValue(), baseStat.getIndividualValue(), level);
     }
 
     private static double lifeStatCalculator(Stats<Integer> specieStats, BaseStat baseStat, int level) {
-        double life = 2 * specieStats.getHp();
-        life = life + baseStat.getEffortValue() / 4d;
-        life = life + baseStat.getIndividualValue() + 2d;
-        life = life * (double) level / 100d;
-        return life + 10 + level;
+        return lifeAttributeFormula(specieStats.getHp(), baseStat.getEffortValue(), baseStat.getIndividualValue(), level);
     }
 
     private static void natureStatsMultiplier(Natures nature, Attributes attributes) {

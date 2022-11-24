@@ -102,6 +102,9 @@ public enum Abilities {
     public String getDescription() {
         return this.description;
     }
+    public TurnStage getTurnStage() {
+        return this.turnStage;
+    }
 
     public String getAbility() {
         String str = this.name();

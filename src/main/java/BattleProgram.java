@@ -1,4 +1,5 @@
 import battle.Battle;
+import battle.director.WeatherCycleDirector;
 import battle.in.BattleField;
 import battle.in.Team;
 import battle.in.Turn;
@@ -36,24 +37,30 @@ public class BattleProgram {
         TypeEffectivenessManager.typeEffectivenessCalculator(charizard.getAttributes());
         AttributeManager.attributeCalculator(charizard.getSpecie().getBaseStats(), charizard.getAttributes());
         Team playerTeam = new Team();
-        playerTeam.setActivePokemon(charizard);
+        playerTeam.setFirstPokemon(charizard);
 
         Stats<Integer> venusaurStats = new Stats<>(80, 82, 100, 83, 100, 80);
         Specie venusaurSpecie = new Specie(003, "Venusaur", 2d, 100d, SpecieCategory.SEED, "Its plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.", venusaurStats);
-        Moves venusaurMoves = charizardMoves;
+        Moves venusaurMoves = new Moves(MoveList.CUT.getMove(), MoveList.EMBER.getMove(), MoveList.POUND.getMove(), MoveList.BUBBLE_BEAM.getMove());
         Stats<BaseStat> venusaurStat = new Stats<>(new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31), new BaseStat(252, 31));
         Level venusaurLevel = new Level(50, 0, 0, 0);
-        Attributes venusaurAttributes = new Attributes(Abilities.OVERGROW, venusaurLevel, List.of(Types.GRASS, Types.POISON), null, venusaurStat, Natures.ADAMANT);
+        Attributes venusaurAttributes = new Attributes(Abilities.CHLOROPHYLL, venusaurLevel, List.of(Types.GRASS, Types.POISON), null, venusaurStat, Natures.ADAMANT);
         PocketMonster venusaur = new PocketMonster(2L, "Venusaur", Genders.FEMALE, false, 255d, venusaurSpecie, Items.ASPEAR_BERRY, venusaurMoves, venusaurAttributes);
         TypeEffectivenessManager.typeEffectivenessCalculator(venusaur.getAttributes());
         AttributeManager.attributeCalculator(venusaur.getSpecie().getBaseStats(), venusaur.getAttributes());
         Team enemyTeam = new Team();
-        enemyTeam.setActivePokemon(venusaur);
+        enemyTeam.setFirstPokemon(venusaur);
 
-        BattleField battleField = new BattleField(Weather.CLEAR_SKIES, Weather.CLEAR_SKIES, Terrain.DEFAULT, playerTeam.getActivePokemon(), enemyTeam.getActivePokemon());
+        BattleField battleField = new BattleField(Weather.RAIN, Weather.CLEAR_SKIES, Terrain.DEFAULT, playerTeam.getFirstPokemon(), enemyTeam.getFirstPokemon());
         Turn turn = new Turn(1, TurnStage.PRE_TURN);
         Battle battle = new Battle(playerTeam, enemyTeam, battleField, turn);
-
+        WeatherCycleDirector.preTurnWeatherCycling(battleField);
+        battleField.getWeather().decreaseDuration();
+        battleField.getWeather().decreaseDuration();
+        battleField.getWeather().decreaseDuration();
+        battleField.getWeather().decreaseDuration();
+        battleField.getWeather().decreaseDuration();
+        WeatherCycleDirector.preTurnWeatherCycling(battleField);
         System.out.println(charizard);
         System.out.println(venusaur);
     }

@@ -1,16 +1,19 @@
 package battle.director;
 
 import battle.in.BattleField;
+import battle.in.enums.Weather;
 import pokemon.PocketMonster;
 import pokemon.components.BaseStat;
 import pokemon.components.Move;
 import pokemon.components.enums.Abilities;
 import pokemon.components.enums.Types;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
 import static battle.in.enums.Weather.CLEAR_SKIES;
+import static java.math.MathContext.DECIMAL32;
 import static pokemon.components.enums.Abilities.CHLOROPHYLL;
 import static pokemon.components.enums.Abilities.RAIN_DISH;
 import static pokemon.components.enums.Abilities.SAND_VEIL;
@@ -25,6 +28,8 @@ import static utils.CalculatorConstants.DOUBLE;
 import static utils.CalculatorConstants.HALF;
 import static utils.CalculatorConstants.HALF_TWICE;
 import static utils.CalculatorConstants.ONE_SIXTEENTH;
+import static utils.CalculatorConstants.TWO_THIRDS;
+import static utils.CalculatorUtils.weatherEveryEndTurnDamage;
 
 public class WeatherCycleDirector {
     private static final int END_DURATION = 0;
@@ -53,9 +58,8 @@ public class WeatherCycleDirector {
         }
     }
 
-    //TODO not implemented yet
     public static void turnWeatherCycling() {
-
+        //TODO not implemented yet
     }
 
     public static void posTurnWeatherCycling(BattleField battleField) {
@@ -74,6 +78,11 @@ public class WeatherCycleDirector {
                 sandstormPosTurnCyclingEffects(activePokemons);
                 break;
         }
+    }
+
+    public static void weatherChange(BattleField battleField, Weather weather) {
+        battleField.setPreviousWeather(battleField.getWeather());
+        battleField.setWeather(weather);
     }
 
     private static void resetBattleFieldWeather(BattleField battleField) {
@@ -122,14 +131,16 @@ public class WeatherCycleDirector {
         pocketMonsters.forEach(pocketMonster -> {
             if (pocketMonster.getAttributes().getAbility().equals(RAIN_DISH))
                 pocketMonster.getAttributes().getStats().getHp()
-                        .setActualValue(pocketMonster.getAttributes().getStats().getHp().getActualValue() +
-                                pocketMonster.getAttributes().getStats().getHp().getActualValue() * ONE_SIXTEENTH);
+                        .setActualValue(weatherEveryEndTurnDamage(
+                                pocketMonster.getAttributes().getStats().getHp().getActualValue(),
+                                pocketMonster.getAttributes().getStats().getHp().getBaseValue()
+                        ));
         });
     }
 
     private static void rainAllTurnCyclingEffectsOff(BattleField battleField) {
-            increaseTypeDamageEffect(battleField, FIRE);
-            decreaseTypeDamageEffect(battleField, WATER);
+            resetStrongTypeDamageEffect(battleField, FIRE);
+            resetWeakTypeDamageEffect(battleField, WATER);
             weatherStatsEffectsOff(List.of(battleField.getFirstPokemon(), battleField.getSecondPokemon()), SWIFT_SWIM);
     }
 
@@ -143,9 +154,9 @@ public class WeatherCycleDirector {
     }
 
     private static void harshSunlightAllTurnCyclingEffectsOff(BattleField battleField) {
-            increaseTypeDamageEffect(battleField, WATER);
-            decreaseTypeDamageEffect(battleField, FIRE);
-            weatherStatsEffectsOff(List.of(battleField.getFirstPokemon(), battleField.getSecondPokemon()), CHLOROPHYLL);
+        resetStrongTypeDamageEffect(battleField, WATER);
+        resetWeakTypeDamageEffect(battleField, FIRE);
+        weatherStatsEffectsOff(List.of(battleField.getFirstPokemon(), battleField.getSecondPokemon()), CHLOROPHYLL);
     }
 
     private static void sandstormAllTurnCyclingEffects(BattleField battleField) {
@@ -157,12 +168,33 @@ public class WeatherCycleDirector {
 
     private static void sandstormPosTurnCyclingEffects(List<PocketMonster> pocketMonsters) {
         pocketMonsters.forEach(pocketMonster -> {
-            if (pocketMonster.getAttributes().getType().stream().filter(type -> type.equals(ROCK) || type.equals(STEEL) || type.equals(GROUND)).findAny().isEmpty()) {
+            if (pocketMonster.getAttributes().getType().stream()
+                    .filter(type -> type.equals(ROCK) || type.equals(STEEL) || type.equals(GROUND))
+                    .findAny()
+                    .isEmpty()) {
                 pocketMonster.getAttributes().getStats().getHp()
-                        .setActualValue(pocketMonster.getAttributes().getStats().getHp().getActualValue() -
-                                pocketMonster.getAttributes().getStats().getHp().getActualValue() * ONE_SIXTEENTH);
+                        .setActualValue(weatherEveryEndTurnDamage(
+                                pocketMonster.getAttributes().getStats().getHp().getActualValue(),
+                                pocketMonster.getAttributes().getStats().getHp().getBaseValue()
+                        ));
             }
         });
+    }
+
+    private static void resetStrongTypeDamageEffect(BattleField battleField, Types type) {
+        List<Move> firstPokemonMoves = battleField.getFirstPokemon().getMoves().getMoveList();
+        List<Move> secondPokemonMoves = battleField.getSecondPokemon().getMoves().getMoveList();
+
+        resetEachMoveDamageStrongByType(firstPokemonMoves, type);
+        resetEachMoveDamageStrongByType(secondPokemonMoves, type);
+    }
+
+    private static void resetWeakTypeDamageEffect(BattleField battleField, Types type) {
+        List<Move> firstPokemonMoves = battleField.getFirstPokemon().getMoves().getMoveList();
+        List<Move> secondPokemonMoves = battleField.getSecondPokemon().getMoves().getMoveList();
+
+        resetEachMoveDamageByWeakType(firstPokemonMoves, type);
+        resetEachMoveDamageByWeakType(secondPokemonMoves, type);
     }
 
     private static void decreaseTypeDamageEffect(BattleField battleField, Types type) {
@@ -173,10 +205,26 @@ public class WeatherCycleDirector {
         decreaseEachMoveDamageByType(secondPokemonMoves, type);
     }
 
+    private static void resetEachMoveDamageByWeakType(List<Move> moves, Types type) {
+        moves.forEach(move -> {
+            if (move.getType().equals(type)) {
+                move.setPower(move.getPower().multiply(BigDecimal.valueOf(TWO_THIRDS), DECIMAL32));
+            }
+        });
+    }
+
+    private static void resetEachMoveDamageStrongByType(List<Move> moves, Types type) {
+        moves.forEach(move -> {
+            if (move.getType().equals(type)) {
+                move.setPower(move.getPower().multiply(BigDecimal.valueOf(DOUBLE), DECIMAL32));
+            }
+        });
+    }
+
     private static void decreaseEachMoveDamageByType(List<Move> moves, Types type) {
         moves.forEach(move -> {
             if (move.getType().equals(type)) {
-                move.setPower(move.getPower() * HALF);
+                move.setPower(move.getPower().multiply(BigDecimal.valueOf(HALF), DECIMAL32));
             }
         });
     }
@@ -192,7 +240,7 @@ public class WeatherCycleDirector {
     private static void increaseEachMoveDamageByType(List<Move> moves, Types type) {
         moves.forEach(move -> {
             if (move.getType().equals(type)) {
-                move.setPower(move.getPower() * HALF_TWICE);
+                move.setPower(move.getPower().multiply(BigDecimal.valueOf(HALF_TWICE), DECIMAL32));
             }
         });
     }

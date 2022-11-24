@@ -19,35 +19,7 @@ public class Battle {
         this.turn = turn;
     }
 
-    public Team getPlayerTeam() {
-        return playerTeam;
-    }
+    public void startBattle() {
 
-    public void setPlayerTeam(Team playerTeam) {
-        this.playerTeam = playerTeam;
-    }
-
-    public Team getEnemyTeam() {
-        return enemyTeam;
-    }
-
-    public void setEnemyTeam(Team enemyTeam) {
-        this.enemyTeam = enemyTeam;
-    }
-
-    public BattleField getBattleField() {
-        return battleField;
-    }
-
-    public void setBattleField(BattleField battleField) {
-        this.battleField = battleField;
-    }
-
-    public Turn getTurn() {
-        return turn;
-    }
-
-    public void setTurn(Turn turn) {
-        this.turn = turn;
     }
 }

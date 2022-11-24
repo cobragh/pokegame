@@ -3,7 +3,6 @@ package battle.in;
 import pokemon.PocketMonster;
 
 public class Team {
-    private PocketMonster activePokemon;
     private PocketMonster firstPokemon;
     private PocketMonster secondPokemon;
     private PocketMonster thirdPokemon;
@@ -13,22 +12,13 @@ public class Team {
 
     public Team() {}
 
-    public Team(PocketMonster activePokemon, PocketMonster firstPokemon, PocketMonster secondPokemon, PocketMonster thirdPokemon, PocketMonster fourthPokemon, PocketMonster fifthPokemon, PocketMonster sixthPokemon) {
-        this.activePokemon = activePokemon;
+    public Team(PocketMonster firstPokemon, PocketMonster secondPokemon, PocketMonster thirdPokemon, PocketMonster fourthPokemon, PocketMonster fifthPokemon, PocketMonster sixthPokemon) {
         this.firstPokemon = firstPokemon;
         this.secondPokemon = secondPokemon;
         this.thirdPokemon = thirdPokemon;
         this.fourthPokemon = fourthPokemon;
         this.fifthPokemon = fifthPokemon;
         this.sixthPokemon = sixthPokemon;
-    }
-
-    public PocketMonster getActivePokemon() {
-        return activePokemon;
-    }
-
-    public void setActivePokemon(PocketMonster activePokemon) {
-        this.activePokemon = activePokemon;
     }
 
     public PocketMonster getFirstPokemon() {

@@ -3,18 +3,20 @@ package pokemon.components;
 import pokemon.components.enums.MoveCategory;
 import pokemon.components.enums.Types;
 
+import java.math.BigDecimal;
+
 public class Move {
     private String name;
     private Types types;
     private int pp;
-    private double power;
+    private BigDecimal power;
     private double accuracy;
     private MoveCategory category;
     private AdditionalEffect additionalEffect;
 
     public Move() {}
 
-    public Move(String name, Types types, int pp, double power, double accuracy, MoveCategory category, AdditionalEffect additionalEffect) {
+    public Move(String name, Types types, int pp, BigDecimal power, double accuracy, MoveCategory category, AdditionalEffect additionalEffect) {
         this.name = name;
         this.types = types;
         this.pp = pp;
@@ -64,11 +66,11 @@ public class Move {
         this.pp = pp;
     }
 
-    public double getPower() {
+    public BigDecimal getPower() {
         return power;
     }
 
-    public void setPower(double power) {
+    public void setPower(BigDecimal power) {
         this.power = power;
     }
 

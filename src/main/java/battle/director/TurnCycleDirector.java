@@ -1,6 +1,7 @@
 package battle.director;
 
 import battle.Battle;
+import battle.in.BattleField;
 
 import static battle.director.WeatherCycleDirector.posTurnWeatherCycling;
 import static battle.director.WeatherCycleDirector.preTurnWeatherCycling;
@@ -11,15 +12,15 @@ public class TurnCycleDirector {
 
     }
 
-    private static void startPreTurn(Battle battle) {
-        preTurnWeatherCycling(battle.getBattleField());
+    private static void startPreTurn(BattleField battleField) {
+        preTurnWeatherCycling(battleField);
     }
 
     private static void startTurn() {
         turnWeatherCycling();
     }
 
-    private static void startPosTurn(Battle battle) {
-        posTurnWeatherCycling(battle.getBattleField());
+    private static void startPosTurn(BattleField battleField) {
+        posTurnWeatherCycling(battleField);
     }
 }
