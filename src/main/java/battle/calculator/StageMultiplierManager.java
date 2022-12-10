@@ -30,7 +30,7 @@ public class StageMultiplierManager {
             stat.setStageMultiplier(currentMultiplier);
             stat.setActualValue(stageMultiplierLogic(previousMultiplier, currentMultiplier, stat.getBaseValue(), stat.getActualValue()));
         } else {
-            //TODO not implemented yet
+            //TODO não implementado
         }
     }
 
@@ -41,7 +41,7 @@ public class StageMultiplierManager {
             stat.setStageMultiplier(currentMultiplier);
             stat.setActualValue(stageMultiplierLogic(previousMultiplier, currentMultiplier, stat.getBaseValue(), stat.getActualValue()));
         } else {
-            //TODO not implemented yet
+            //TODO não implementado
         }
     }
 
